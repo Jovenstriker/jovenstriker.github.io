@@ -475,6 +475,61 @@ main { max-width: 1100px; margin: 0 auto; padding: 0 6vw; }
 .role { font-size: 0.78rem; color: var(--accent); margin: 0.15rem 0 0.8rem; }
 .beyond-card p:last-child { color: var(--muted); font-size: 0.97rem; }
 
+.beyond-card.origami {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: minmax(220px, 1fr) 2fr;
+  gap: 2rem;
+  align-items: center;
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.75rem;
+}
+
+.gallery button {
+  border: 0;
+  padding: 0;
+  background: none;
+  cursor: zoom-in;
+  border-radius: 12px;
+  overflow: hidden;
+  aspect-ratio: 3 / 4;
+}
+
+.gallery img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s;
+}
+
+.gallery button:hover img { transform: scale(1.06); }
+
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: grid;
+  place-items: center;
+  background: rgba(26, 26, 46, 0.8);
+  backdrop-filter: blur(6px);
+  cursor: zoom-out;
+  padding: 2rem;
+}
+
+.lightbox[hidden] { display: none; }
+
+.lightbox img {
+  max-width: 100%;
+  max-height: 90vh;
+  border-radius: 12px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+}
+
 /* Contact */
 .contact { text-align: center; max-width: 600px; margin: 0 auto; padding-bottom: 9rem; }
 .contact p { color: var(--muted); font-size: 1.1rem; margin-bottom: 2.5rem; }
@@ -532,6 +587,8 @@ main { max-width: 1100px; margin: 0 auto; padding: 0 6vw; }
   .cursor-glow { display: none; }
   .projects { grid-template-columns: 1fr; }
   .beyond-grid { grid-template-columns: 1fr; }
+  .beyond-card.origami { grid-template-columns: 1fr; }
+  .gallery { grid-template-columns: repeat(2, 1fr); }
 }
 
 @media (prefers-reduced-motion: reduce) {

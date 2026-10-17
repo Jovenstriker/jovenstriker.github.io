@@ -206,6 +206,20 @@ function ui() {
     glow.style.top = e.clientY + "px";
   });
 
+  // Origami lightbox
+  const lightbox = document.getElementById("lightbox");
+  const lightboxImg = lightbox.querySelector("img");
+  document.querySelectorAll(".gallery button").forEach((btn) =>
+    btn.addEventListener("click", () => {
+      const img = btn.querySelector("img");
+      lightboxImg.src = img.src;
+      lightboxImg.alt = img.alt;
+      lightbox.hidden = false;
+    })
+  );
+  lightbox.addEventListener("click", () => (lightbox.hidden = true));
+  addEventListener("keydown", (e) => e.key === "Escape" && (lightbox.hidden = true));
+
   const io = new IntersectionObserver(
     (entries) => entries.forEach((en) => en.isIntersecting && en.target.classList.add("visible")),
     { threshold: 0.12 }

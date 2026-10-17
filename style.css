@@ -100,7 +100,17 @@ main {
   color: var(--muted);
 }
 
-.hero-links { margin-top: 1.75rem; display: flex; gap: 1.5rem; }
+.hero-icons { margin-top: 1.75rem; display: flex; gap: 1.4rem; align-items: center; }
+
+main .hero-icons a {
+  border: 0;
+  color: var(--text);
+  transition: color 0.15s, transform 0.15s;
+}
+
+main .hero-icons a:hover { color: var(--accent); transform: translateY(-2px); }
+
+.hero-icons svg { width: 30px; height: 30px; fill: currentColor; display: block; }
 
 /* Sections */
 .section {

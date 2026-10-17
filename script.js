@@ -39,6 +39,7 @@ const PROJECTS = [
     metric: "Presented at AGU25 · Accepted to AGU26",
     tags: ["Data Science", "XGBoost", "GIS"],
     cover: "images/smesh-burn.jpg",
+    coverPosition: "center top",
     links: [
       { label: "Dashboard", url: "https://smeshpepperwood2025.streamlit.app/", icon: "demo" },
       { label: "AGU25 abstract", url: "https://studio.m-anage.com/agu/agu25/meetingapp.cgi/Paper/1957727?clearcache=1", icon: "doc" },

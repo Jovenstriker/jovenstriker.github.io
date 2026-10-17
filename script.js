@@ -59,15 +59,8 @@ const PROJECTS = [
   },
 ];
 
-// Phrases cycled in the hero "I ___"
-const TYPED_WORDS = [
-  "build safer drones.",
-  "prove theorems with LLMs.",
-  "fold origami.",
-  "box.",
-  "squat 415.",
-  "play soccer.",
-];
+// Words cycled in the hero "I build ___"
+const TYPED_WORDS = ["safer drones.", "theorem provers.", "ML models.", "data dashboards."];
 
 // ============================================================
 

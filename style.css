@@ -98,7 +98,6 @@ main {
   margin-top: 1.25rem;
   font-size: 1.15rem;
   color: var(--muted);
-  max-width: 600px;
 }
 
 .hero-links { margin-top: 1.75rem; display: flex; gap: 1.5rem; }

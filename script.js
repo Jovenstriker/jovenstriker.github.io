@@ -212,7 +212,6 @@ function ui() {
   );
   document.querySelectorAll(".reveal").forEach((el) => io.observe(el));
 
-  document.getElementById("year").textContent = new Date().getFullYear();
 }
 
 renderProjects();

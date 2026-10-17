@@ -124,8 +124,8 @@ main {
 /* About */
 .facts {
   display: grid;
-  grid-template-columns: 120px 1fr;
-  gap: 0.9rem 1.5rem;
+  grid-template-columns: max-content 1fr;
+  gap: 0.9rem 1.25rem;
   margin-top: 2rem;
   font-size: 0.95rem;
 }

@@ -36,7 +36,7 @@ main a {
 main a:hover { color: var(--accent); border-color: var(--accent); }
 
 main {
-  max-width: 760px;
+  max-width: 880px;
   margin: 0 auto;
   padding: 0 24px;
 }
@@ -53,7 +53,7 @@ main {
 }
 
 .nav-inner {
-  max-width: 760px;
+  max-width: 880px;
   margin: 0 auto;
   padding: 0.9rem 24px;
   display: flex;

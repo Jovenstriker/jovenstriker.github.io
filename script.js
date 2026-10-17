@@ -22,7 +22,7 @@ const PROJECTS = [
     description:
       "Tree-of-Thoughts search with LLM prover and evaluator agents. Each candidate tactic is verified in Lean 4, and only the most promising proof paths are kept. Evaluated on 126 Lean Mathlib theorems against a one-shot Gemini 2.5 Flash baseline.",
     metric: "Proved 4× theorems with Gemini 2.5 Flash (47 vs. 11)",
-    tags: ["LLMs", "Lean 4", "Search", "Python"],
+    tags: ["LLMs", "Lean 4", "Python"],
     cover: "images/lean-tot-poster.jpg",
     coverPosition: "top",
     links: [
@@ -37,7 +37,7 @@ const PROJECTS = [
     description:
       "Live dashboard of radio-connected sensors that tracks air quality during prescribed burns for local firefighters.",
     metric: "Presented at AGU25 · Accepted to AGU26",
-    tags: ["Data Science", "XGBoost", "GIS"],
+    tags: ["Data Science", "XGBoost", "QGIS"],
     cover: "images/smesh-burn.jpg",
     coverPosition: "center top",
     links: [

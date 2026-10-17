@@ -1,10 +1,10 @@
 :root {
   --bg: #0c0c0d;
   --surface: #141416;
-  --text: #ececec;
-  --muted: #8b8b92;
-  --faint: #5c5c63;
-  --border: #232327;
+  --text: #fafafa;
+  --muted: #c4c4ca;
+  --faint: #8e8e96;
+  --border: #45454c;
   --accent: #a9b4ff;
   --mono: "JetBrains Mono", ui-monospace, monospace;
   color-scheme: dark;
@@ -74,6 +74,16 @@ main {
 
 .nav-links a:hover { color: var(--text); }
 
+.nav-links a.nav-cv {
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 0.15rem 0.6rem;
+  margin: -0.15rem 0;
+}
+
+.nav-links a.nav-cv:hover { border-color: var(--faint); }
+
 /* Hero */
 .hero { padding: 7rem 0 4rem; }
 
@@ -140,7 +150,7 @@ main {
   transition: border-color 0.2s;
 }
 
-.card:hover { border-color: #34343a; }
+.card:hover { border-color: #6a6a72; }
 
 .card-cover {
   aspect-ratio: 16 / 9;

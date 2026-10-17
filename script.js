@@ -20,7 +20,7 @@ const PROJECTS = [
     title: "Collaborative LLM Reasoning in Lean Theorem Proving",
     org: "Stanford CS229 · with Tom Liu",
     description:
-      "Tree-of-Thoughts search with LLM prover and evaluator agents. Each candidate tactic is verified in Lean 4, and only the most promising proof paths are kept. I built the search framework, the prompts, and the Lean environment.",
+      "Tree-of-Thoughts search with LLM prover and evaluator agents. Each candidate tactic is verified in Lean 4, and only the most promising proof paths are kept.",
     metric: "Proved 4× more theorems with Gemini 2.5 Flash (47 vs. 11 of 126)",
     tags: ["LLMs", "Lean 4", "Search", "Python"],
     cover: "images/lean-tot-poster.jpg",

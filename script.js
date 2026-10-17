@@ -65,7 +65,7 @@ const TYPED_WORDS = [
   "prove theorems with LLMs.",
   "fold origami.",
   "box.",
-  "squat 415 lbs and bench 225 lbs.",
+  "squat 415.",
   "play soccer.",
 ];
 

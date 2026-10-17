@@ -133,6 +133,15 @@ main {
 .facts dt { color: var(--faint); }
 .facts dd { color: var(--muted); }
 
+.course-level {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text);
+  margin-right: 0.5rem;
+}
+
 /* Projects */
 .projects {
   display: grid;

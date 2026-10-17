@@ -107,6 +107,18 @@ function renderProjects() {
 
 // ---------- Misc UI ----------
 function ui() {
+  // Copy email
+  const copyBtn = document.getElementById("copy-email");
+  copyBtn.addEventListener("click", async () => {
+    try {
+      await navigator.clipboard.writeText(copyBtn.dataset.email);
+      copyBtn.textContent = "Copied";
+    } catch {
+      copyBtn.textContent = "Copy failed";
+    }
+    setTimeout(() => (copyBtn.textContent = "Copy"), 1600);
+  });
+
   // Origami lightbox
   const lightbox = document.getElementById("lightbox");
   const lightboxImg = lightbox.querySelector("img");

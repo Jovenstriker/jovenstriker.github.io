@@ -134,12 +134,9 @@ main {
 .facts dd { color: var(--muted); }
 
 .course-level {
-  font-family: var(--mono);
-  font-size: 0.72rem;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
+  font-weight: 500;
   color: var(--text);
-  margin-right: 0.5rem;
+  margin-right: 0.25rem;
 }
 
 /* Projects */

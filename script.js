@@ -1,6 +1,6 @@
 // ============================================================
 //  EDIT YOUR PROJECTS HERE
-//  - cover: an image URL/path (falls back to the emoji if omitted)
+//  - cover: an image URL/path
 //  - metric: a headline result shown on the card
 //  - links: any number of { label, url, icon } — icon is one of
 //           "video", "paper", "demo", "github", "doc"
@@ -59,9 +59,6 @@ const PROJECTS = [
   },
 ];
 
-// Words cycled in the hero "I build ___"
-const TYPED_WORDS = ["safer drones.", "theorem provers.", "ML models.", "data dashboards."];
-
 // ============================================================
 
 const ICONS = {
@@ -85,7 +82,7 @@ function renderProjects() {
   grid.innerHTML = PROJECTS.map((p) => {
     const cover = p.cover
       ? `<img src="${escapeHTML(p.cover)}" alt="${escapeHTML(p.title)}" loading="lazy"${p.coverPosition ? ` style="object-position:${escapeHTML(p.coverPosition)}"` : ""} />`
-      : `<span class="emoji">${p.emoji || "✨"}</span>`;
+      : "";
     const video = (p.links || []).find((l) => l.icon === "video");
     const coverInner = video
       ? `<a href="${escapeHTML(video.url)}" target="_blank" rel="noopener" aria-label="Watch ${escapeHTML(p.title)} video">${cover}<span class="play">${ICONS.video}</span></a>`
@@ -95,7 +92,7 @@ function renderProjects() {
       .join("");
     return `
       <article class="card">
-        <div class="card-cover" style="background:${escapeHTML(p.color || "#eef")}">${coverInner}</div>
+        <div class="card-cover">${coverInner}</div>
         <div class="card-body">
           ${p.org ? `<p class="org mono">${escapeHTML(p.org)}</p>` : ""}
           <h4>${escapeHTML(p.title)}</h4>
@@ -106,106 +103,10 @@ function renderProjects() {
         </div>
       </article>`;
   }).join("");
-
-  // 3D tilt on hover
-  if (window.matchMedia("(hover: hover)").matches) {
-    grid.querySelectorAll(".card").forEach((card) => {
-      card.addEventListener("mousemove", (e) => {
-        const r = card.getBoundingClientRect();
-        const x = (e.clientX - r.left) / r.width - 0.5;
-        const y = (e.clientY - r.top) / r.height - 0.5;
-        card.style.transform = `perspective(800px) rotateX(${-y * 6}deg) rotateY(${x * 6}deg) translateY(-4px)`;
-      });
-      card.addEventListener("mouseleave", () => (card.style.transform = ""));
-    });
-  }
-}
-
-// ---------- Typing effect ----------
-function typeLoop() {
-  const el = document.getElementById("typed");
-  let word = 0, char = 0, deleting = false;
-  (function tick() {
-    const current = TYPED_WORDS[word];
-    char += deleting ? -1 : 1;
-    el.textContent = current.slice(0, char);
-    let delay = deleting ? 45 : 90;
-    if (!deleting && char === current.length) { deleting = true; delay = 1600; }
-    else if (deleting && char === 0) { deleting = false; word = (word + 1) % TYPED_WORDS.length; delay = 300; }
-    setTimeout(tick, delay);
-  })();
-}
-
-// ---------- Background: drifting connected dots ----------
-function background() {
-  const canvas = document.getElementById("bg");
-  const ctx = canvas.getContext("2d");
-  const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  let w, h, dots;
-  const mouse = { x: -9999, y: -9999 };
-
-  function resize() {
-    const dpr = window.devicePixelRatio || 1;
-    w = canvas.width = innerWidth * dpr;
-    h = canvas.height = innerHeight * dpr;
-    canvas.style.width = innerWidth + "px";
-    canvas.style.height = innerHeight + "px";
-    ctx.setTransform(1, 0, 0, 1, 0, 0);
-    ctx.scale(dpr, dpr);
-    const count = Math.min(80, Math.floor((innerWidth * innerHeight) / 18000));
-    dots = Array.from({ length: count }, () => ({
-      x: Math.random() * innerWidth,
-      y: Math.random() * innerHeight,
-      vx: (Math.random() - 0.5) * 0.3,
-      vy: (Math.random() - 0.5) * 0.3,
-    }));
-  }
-
-  function draw() {
-    ctx.clearRect(0, 0, innerWidth, innerHeight);
-    for (const d of dots) {
-      d.x += d.vx; d.y += d.vy;
-      if (d.x < 0 || d.x > innerWidth) d.vx *= -1;
-      if (d.y < 0 || d.y > innerHeight) d.vy *= -1;
-      // gentle push away from cursor
-      const mx = d.x - mouse.x, my = d.y - mouse.y, md = Math.hypot(mx, my);
-      if (md < 120) { d.x += (mx / md) * 1.2; d.y += (my / md) * 1.2; }
-    }
-    for (let i = 0; i < dots.length; i++) {
-      for (let j = i + 1; j < dots.length; j++) {
-        const a = dots[i], b = dots[j];
-        const dist = Math.hypot(a.x - b.x, a.y - b.y);
-        if (dist < 140) {
-          ctx.strokeStyle = `rgba(79, 70, 229, ${0.12 * (1 - dist / 140)})`;
-          ctx.lineWidth = 1;
-          ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke();
-        }
-      }
-    }
-    ctx.fillStyle = "rgba(79, 70, 229, 0.35)";
-    for (const d of dots) { ctx.beginPath(); ctx.arc(d.x, d.y, 1.8, 0, Math.PI * 2); ctx.fill(); }
-    if (!reduce) requestAnimationFrame(draw);
-  }
-
-  addEventListener("resize", resize);
-  addEventListener("mousemove", (e) => { mouse.x = e.clientX; mouse.y = e.clientY; });
-  resize();
-  draw();
 }
 
 // ---------- Misc UI ----------
 function ui() {
-  const nav = document.querySelector(".nav");
-  const onScroll = () => nav.classList.toggle("scrolled", scrollY > 20);
-  addEventListener("scroll", onScroll, { passive: true });
-  onScroll();
-
-  const glow = document.querySelector(".cursor-glow");
-  addEventListener("mousemove", (e) => {
-    glow.style.left = e.clientX + "px";
-    glow.style.top = e.clientY + "px";
-  });
-
   // Origami lightbox
   const lightbox = document.getElementById("lightbox");
   const lightboxImg = lightbox.querySelector("img");
@@ -219,16 +120,7 @@ function ui() {
   );
   lightbox.addEventListener("click", () => (lightbox.hidden = true));
   addEventListener("keydown", (e) => e.key === "Escape" && (lightbox.hidden = true));
-
-  const io = new IntersectionObserver(
-    (entries) => entries.forEach((en) => en.isIntersecting && en.target.classList.add("visible")),
-    { threshold: 0.12 }
-  );
-  document.querySelectorAll(".reveal").forEach((el) => io.observe(el));
-
 }
 
 renderProjects();
-typeLoop();
-background();
 ui();

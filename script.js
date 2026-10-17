@@ -21,7 +21,7 @@ const PROJECTS = [
     org: "Stanford CS229 · with Tom Liu",
     description:
       "Tree-of-Thoughts search with LLM prover and evaluator agents. Each candidate tactic is verified in Lean 4, and only the most promising proof paths are kept. Evaluated on 126 Lean Mathlib theorems against a one-shot Gemini 2.5 Flash baseline.",
-    metric: "Proved 4× more with Gemini 2.5 Flash (47 vs. 11)",
+    metric: "Proved 4× theorems with Gemini 2.5 Flash (47 vs. 11)",
     tags: ["LLMs", "Lean 4", "Search", "Python"],
     cover: "images/lean-tot-poster.jpg",
     coverPosition: "top",

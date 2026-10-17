@@ -4,7 +4,6 @@
 //  - metric: a headline result shown on the card
 //  - links: any number of { label, url, icon } — icon is one of
 //           "video", "paper", "demo", "github", "doc"
-//  - featured: true shows a "featured" badge
 // ============================================================
 const PROJECTS = [
   {
@@ -16,14 +15,13 @@ const PROJECTS = [
     tags: ["Computer Vision", "Robotics", "PyTorch"],
     cover: "https://img.youtube.com/vi/bEk-tr6aKcg/hqdefault.jpg",
     links: [{ label: "Demo video", url: "https://youtu.be/bEk-tr6aKcg", icon: "video" }],
-    featured: true,
   },
   {
     title: "Collaborative LLM Reasoning in Lean Theorem Proving",
     org: "Stanford CS229 · with Tom Liu",
     description:
       "Tree-of-Thoughts search with LLM prover and evaluator agents. Each candidate tactic is verified in Lean 4, and only the most promising proof paths are kept. I built the search framework, the prompts, and the Lean environment.",
-    metric: "47/126 solved vs. 11/126 using Gemini 2.5 Flash",
+    metric: "Proved 4× more theorems with Gemini 2.5 Flash (47 vs. 11 of 126)",
     tags: ["LLMs", "Lean 4", "Search", "Python"],
     cover: "images/lean-tot-poster.jpg",
     coverPosition: "top",
@@ -32,17 +30,15 @@ const PROJECTS = [
       { label: "Poster", url: "files/lean-tot-poster.pdf", icon: "doc" },
       { label: "Code", url: "https://github.com/pianomaster99/Fermats2ndLastTheorem", icon: "github" },
     ],
-    featured: true,
   },
   {
-    title: "Pepperwood Air Quality Dashboard",
+    title: "SMesh Radio-Connected Air Quality Sensors for Prescribed Burns",
     org: "Stanford Radio Club",
     description:
       "Live dashboard of radio-connected sensors that tracks air quality during prescribed burns for local firefighters.",
-    metric: "43% less sensor power, r > 0.7",
+    metric: "Presented at AGU25 · Accepted to AGU26",
     tags: ["Data Science", "XGBoost", "GIS"],
-    emoji: "🔥",
-    color: "linear-gradient(135deg,#fef3c7,#fecaca)",
+    cover: "images/smesh-burn.jpg",
     links: [
       { label: "Dashboard", url: "https://smeshpepperwood2025.streamlit.app/", icon: "demo" },
       { label: "AGU25 abstract", url: "https://studio.m-anage.com/agu/agu25/meetingapp.cgi/Paper/1957727?clearcache=1", icon: "doc" },
@@ -99,7 +95,6 @@ function renderProjects() {
       .join("");
     return `
       <article class="card">
-        ${p.featured ? '<span class="featured-badge">★ featured</span>' : ""}
         <div class="card-cover" style="background:${escapeHTML(p.color || "#eef")}">${coverInner}</div>
         <div class="card-body">
           ${p.org ? `<p class="org mono">${escapeHTML(p.org)}</p>` : ""}

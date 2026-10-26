@@ -2,12 +2,13 @@
 //  EDIT YOUR PROJECTS HERE
 //  - cover: an image URL/path
 //  - metric: a headline result shown on the card
+//  - paper: optional paper title shown under the metric
 //  - links: any number of { label, url, icon } — icon is one of
 //           "video", "paper", "demo", "github", "doc"
 // ============================================================
 const PROJECTS = [
   {
-    title: "Vision-Based Drone Collision Avoidance",
+    title: "Learned Visual Safety Filter for Collision-Free Drone Flight",
     org: "Stanford Safe and Intelligent Autonomy Lab",
     description:
       "Autonomous drone controller that uses a finetuned DINOv2 model to predict whether an action is safe, trained with 10 rounds of DAgger on 100M+ state-action pairs.",
@@ -51,6 +52,7 @@ const PROJECTS = [
     description:
       "CNN-LSTM model that estimates blood pressure from photoplethysmography signals on a wearable device, validated against gold-standard Vicorder measurements.",
     metric: "Published in IEEE J-FLEX",
+    paper: "A Pilot Human Study on Dual Photoplethysmography for Continuously Monitoring Pulse Wave Velocity and Blood Pressure",
     tags: ["Deep Learning", "Signal Processing", "TensorFlow"],
     cover: "https://img.youtube.com/vi/dA5jr4LaCaA/hqdefault.jpg",
     links: [
@@ -98,6 +100,7 @@ function renderProjects() {
           ${p.org ? `<p class="org mono">${escapeHTML(p.org)}</p>` : ""}
           <h4>${escapeHTML(p.title)}</h4>
           ${p.metric ? `<p class="metric">${escapeHTML(p.metric)}</p>` : ""}
+          ${p.paper ? `<p class="paper-title">“${escapeHTML(p.paper)}”</p>` : ""}
           <p class="desc">${escapeHTML(p.description)}</p>
           <ul class="tags">${p.tags.map((t) => `<li>${escapeHTML(t)}</li>`).join("")}</ul>
           ${links ? `<div class="pills">${links}</div>` : ""}

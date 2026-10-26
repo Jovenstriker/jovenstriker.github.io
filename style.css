@@ -225,6 +225,13 @@ main .hero-icons a:hover { color: var(--accent); transform: translateY(-2px); }
   color: var(--accent);
 }
 
+.paper-title {
+  margin-top: 0.3rem;
+  font-size: 0.82rem;
+  font-style: italic;
+  color: var(--muted);
+}
+
 .desc {
   color: var(--muted);
   font-size: 0.9rem;

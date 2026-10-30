@@ -74,16 +74,6 @@ main {
 
 .nav-links a:hover { color: var(--text); }
 
-.nav-links a.nav-cv {
-  color: var(--text);
-  border: 1px solid var(--border);
-  border-radius: 6px;
-  padding: 0.15rem 0.6rem;
-  margin: -0.15rem 0;
-}
-
-.nav-links a.nav-cv:hover { border-color: var(--faint); }
-
 /* Hero */
 .hero { padding: 7rem 0 4rem; }
 
